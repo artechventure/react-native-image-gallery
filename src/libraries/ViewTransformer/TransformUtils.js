@@ -54,7 +54,7 @@ export function fitCenterRect (contentAspectRatio, containerRect) {
 }
 
 /**
- * The React Native transform system use the center of the view as the pivot when scaling.
+ * The React Native transform system use the center of the screen as the pivot when scaling.
  * The translations are applied before scaling.
  * @param rect
  * @param transform

@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactNative, { View, Animated, Easing, NativeModules } from 'react-native';
-import Scroller from '../Scroller';
+import Scroller from '../Scroller/index';
 import PropTypes from 'prop-types';
-import { createResponder } from '../GestureResponder';
+import { createResponder } from '../GestureResponder/index';
 import { Rect, Transform, transformedRect, availableTranslateSpace, fitCenterRect, alignedRect, getTransform } from './TransformUtils';
 
 export default class ViewTransformer extends React.Component {
@@ -104,7 +104,7 @@ export default class ViewTransformer extends React.Component {
             onResponderGrant: this.onResponderGrant,
             onResponderRelease: this.onResponderRelease,
             onResponderTerminate: this.onResponderRelease,
-            onResponderTerminationRequest: (evt, gestureState) => false, // Do not allow parent view to intercept gesture
+            onResponderTerminationRequest: (evt, gestureState) => false, // Do not allow parent screen to intercept gesture
             onResponderSingleTapConfirmed: (evt, gestureState) => {
                 this.props.onSingleTapConfirmed && this.props.onSingleTapConfirmed();
             }

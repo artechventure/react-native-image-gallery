@@ -1,10 +1,10 @@
 /**
- * @providesModule TouchHistoryMath
+ * @providesModule TouchHistoryMathCopy
  */
 
 'use strict';
 
-var TouchHistoryMath = {
+var TouchHistoryMathCopy = {
   /**
    * This code is optimized and not intended to look beautiful. This allows
    * computing of touch centroids that have moved after `touchesChangedAfter`
@@ -12,7 +12,7 @@ var TouchHistoryMath = {
    * moves after `touchesChangedAfter`, or you can compute the previous
    * centroid of all touches that were moved after `touchesChangedAfter`.
    *
-   * @param {TouchHistoryMath} touchHistory Standard Responder touch track
+   * @param {TouchHistoryMathCopy} touchHistory Standard Responder touch track
    * data.
    * @param {number} touchesChangedAfter timeStamp after which moved touches
    * are considered "actively moving" - not just "active".
@@ -52,42 +52,42 @@ var TouchHistoryMath = {
                 }
             }
         }
-        return count > 0 ? total / count : TouchHistoryMath.noCentroid;
+        return count > 0 ? total / count : TouchHistoryMathCopy.noCentroid;
     },
 
     currentCentroidXOfTouchesChangedAfter: function (touchHistory, touchesChangedAfter) {
-        return TouchHistoryMath.centroidDimension(touchHistory, touchesChangedAfter, true, // isXAxis
+        return TouchHistoryMathCopy.centroidDimension(touchHistory, touchesChangedAfter, true, // isXAxis
     true // ofCurrent
     );
     },
 
     currentCentroidYOfTouchesChangedAfter: function (touchHistory, touchesChangedAfter) {
-        return TouchHistoryMath.centroidDimension(touchHistory, touchesChangedAfter, false, // isXAxis
+        return TouchHistoryMathCopy.centroidDimension(touchHistory, touchesChangedAfter, false, // isXAxis
     true // ofCurrent
     );
     },
 
     previousCentroidXOfTouchesChangedAfter: function (touchHistory, touchesChangedAfter) {
-        return TouchHistoryMath.centroidDimension(touchHistory, touchesChangedAfter, true, // isXAxis
+        return TouchHistoryMathCopy.centroidDimension(touchHistory, touchesChangedAfter, true, // isXAxis
     false // ofCurrent
     );
     },
 
     previousCentroidYOfTouchesChangedAfter: function (touchHistory, touchesChangedAfter) {
-        return TouchHistoryMath.centroidDimension(touchHistory, touchesChangedAfter, false, // isXAxis
+        return TouchHistoryMathCopy.centroidDimension(touchHistory, touchesChangedAfter, false, // isXAxis
     false // ofCurrent
     );
     },
 
     currentCentroidX: function (touchHistory) {
-        return TouchHistoryMath.centroidDimension(touchHistory, 0, // touchesChangedAfter
+        return TouchHistoryMathCopy.centroidDimension(touchHistory, 0, // touchesChangedAfter
     true, // isXAxis
     true // ofCurrent
     );
     },
 
     currentCentroidY: function (touchHistory) {
-        return TouchHistoryMath.centroidDimension(touchHistory, 0, // touchesChangedAfter
+        return TouchHistoryMathCopy.centroidDimension(touchHistory, 0, // touchesChangedAfter
     false, // isXAxis
     true // ofCurrent
     );
@@ -96,4 +96,4 @@ var TouchHistoryMath = {
     noCentroid: -1
 };
 
-module.exports = TouchHistoryMath;
+module.exports = TouchHistoryMathCopy;
