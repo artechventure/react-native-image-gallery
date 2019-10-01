@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react';
-import {FlatList, InteractionManager, View, ViewPropTypes} from 'react-native';
+import {FlatList, InteractionManager, View, ViewPropTypes, Platform, Dimensions} from 'react-native';
 import PropTypes from 'prop-types';
-import {Dimensions} from '../../../../tools/wave_native';
+import ExtraDimensions from "react-native-extra-dimensions-android";
 import Scroller from '../Scroller/index';
 import {createResponder} from '../GestureResponder/index';
 
@@ -9,7 +9,15 @@ const MIN_FLING_VELOCITY = 0.5;
 
 // Dimensions are only used initially.
 // onLayout should handle orientation swap.
-const { width, height } = Dimensions;
+const ActualDimensions = {
+  width: Dimensions.get("window").width,
+  height:
+    Platform.OS === "ios"
+      ? Dimensions.get("window").height
+      : ExtraDimensions.get("REAL_WINDOW_HEIGHT") -
+      ExtraDimensions.get("SOFT_MENU_BAR_HEIGHT"),
+}
+const { width, height } = ActualDimensions;
 
 export default class ViewPager extends PureComponent {
     static propTypes = {
@@ -109,7 +117,7 @@ export default class ViewPager extends PureComponent {
 
       const finalX = this.getScrollOffsetOfPage(page);
       this.scroller.startScroll(this.scroller.getCurrX(), 0, finalX - this.scroller.getCurrX(), 0, 0);
-        
+
       requestAnimationFrame(() => {
         // this is here to work around a bug in FlatList, as discussed here
         // https://github.com/facebook/react-native/issues/1831
@@ -290,7 +298,7 @@ export default class ViewPager extends PureComponent {
             { element }
           </View>
         );
-      } 
+      }
       return element;
     }
 

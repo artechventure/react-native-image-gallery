@@ -1,6 +1,5 @@
 import React, { PureComponent } from "react";
-import { View, ViewPropTypes, Image } from "react-native";
-import { Text } from "../../../../tools/wave_native";
+import { View, ViewPropTypes, Image, Text } from "react-native";
 import PropTypes from "prop-types";
 import ViewTransformer from "../ViewTransformer/index";
 
@@ -159,7 +158,9 @@ export default class TransformableImage extends PureComponent {
 						justifyContent: "center"
 					}}
 				>
-					<Text style={{ color: "white", fontSize: 15, fontStyle: "italic" }}>
+					<Text style={{ color: "white", fontSize: 15, fontStyle: "italic" }}
+								allowFontScaling={false}
+								ellipsizeMode="tail">
 						This image cannot be displayed...
 					</Text>
 				</View>

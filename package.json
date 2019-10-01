@@ -19,7 +19,8 @@
   "dependencies": {
     "prop-types": "^15.6.0",
     "react-mixin": "^3.0.5",
-    "react-timer-mixin": "^0.13.3"
+    "react-timer-mixin": "^0.13.3",
+    "react-native-extra-dimensions-android": "https://github.com/artechventure/react-native-extra-dimensions-android.git"
   },
   "peerDependencies": {
     "react": "*",
